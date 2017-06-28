@@ -1,0 +1,12 @@
+form-carousel {
+    width: 250px;
+}
+
+form-carousel .carousel-indicators li {
+    background-color: #337ab7;
+    cursor: default;
+}
+
+form-carousel .carousel-indicators li.active {
+    background-color: #bada55;
+}

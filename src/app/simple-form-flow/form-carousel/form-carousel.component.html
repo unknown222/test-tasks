@@ -1,0 +1,115 @@
+<form class="carousel" name="form" ng-model-options="{ updateOn: 'blur' }" novalidate>
+    <div ng-if="sffForm.currentStep === sffForm.steps[0]">
+        <div class="form-group" ng-class="{'has-error': form.sum.$invalid}">
+            <label for="sum">Сумма:</label>
+            <input type="number" class="form-control"
+                   id="sum" name="sum"
+                   ng-model="sffForm.formData.sum"
+                   min="1" max="10000" required>
+            <span ng-show="form.sum.$error.required">Необходимо заполнить это поле.</span>
+            <span ng-show="form.sum.$error.min || form.sum.$error.max">Значение должно находится в диапазоне от 1 до 10000</span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': form.term.$invalid}">
+            <label for="term">Срок:</label>
+            <input type="number" class="form-control"
+                   id="term" name="term"
+                   ng-model="sffForm.formData.term"
+                   min="1" max="12" required>
+            <span class="help-inline" ng-show="form.term.$error.required">Необходимо заполнить это поле.</span>
+            <span class="help-inline" ng-show="form.term.$error.min || form.term.$error.max">Значение должно находится в диапазоне от 1 до 12</span>
+        </div>
+    </div>
+
+    <div ng-if="sffForm.currentStep === sffForm.steps[1]">
+        <div class="form-group" ng-class="{'has-error': form.inn.$invalid}">
+            <label for="inn">ИНН:</label>
+            <input type="number" class="form-control"
+                   id="inn" name="inn"
+                   ng-model="sffForm.formData.inn"
+                   ng-blur="sffForm.validateAge(form.inn)"
+                   minlength="10" maxlength="10" required>
+            <span ng-show="form.inn.$error.required">Необходимо заполнить это поле.</span>
+            <span ng-show="form.inn.$error.minlength || form.inn.$error.maxlength">Значение ИНН должно быть 10 символам</span>
+            <span ng-show="form.inn.$error.age">Вы должны быть старше 21 года</span>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Фамилия:</label>
+            <input type="text" class="form-control"
+                   id="surname" name="surname"
+                   ng-model="sffForm.formData.surname"
+                   required>
+            <span ng-show="form.surname.$error.required">Необходимо заполнить это поле.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" class="form-control"
+                   id="name" name="name"
+                   ng-model="sffForm.formData.name"
+                   required>
+            <span ng-show="form.name.$error.required">Необходимо заполнить это поле.</span>
+        </div>
+        <div class="form-group">
+            <label for="city">Город:</label>
+            <input type="text" class="form-control"
+                   id="city" name="city"
+                   ng-model="sffForm.formData.city"
+                   ng-model-options="{ updateOn: 'default', debounce: {default: 100} }"
+                   uib-typeahead="city for city in sffForm.getCities(sffForm.formData.city)"
+                   typeahead-loading="loadingLocations"
+                   typeahead-no-results="noResults"
+                   required>
+            <span ng-show="form.city.$error.required">Необходимо заполнить это поле.</span>
+        </div>
+    </div>
+
+    <div ng-if="sffForm.currentStep === sffForm.steps[sffForm.steps.length - 1]" class="form-group form-inline">
+        <div>
+            <label for="sum">Сумма:</label>
+            <p class="form-control-static">{{sffForm.formData.sum}}</p>
+        </div>
+        <div>
+            <label for="sum">Срок:</label>
+            <p class="form-control-static">{{sffForm.formData.term}}</p>
+        </div>
+        <div>
+            <label for="sum">ИНН:</label>
+            <p class="form-control-static">{{sffForm.formData.inn}}</p>
+        </div>
+        <div>
+            <label for="sum">Фамилия:</label>
+            <p class="form-control-static">{{sffForm.formData.surname}}</p>
+        </div>
+        <div>
+            <label for="sum">Имя:</label>
+            <p class="form-control-static">{{sffForm.formData.name}}</p>
+        </div>
+        <div>
+            <label for="sum">Город:</label>
+            <p class="form-control-static">{{sffForm.formData.city}}</p>
+        </div>
+    </div>
+
+    <ol class="carousel-indicators">
+        <li ng-repeat="step in sffForm.steps"
+            ng-class="{active: step === sffForm.currentStep}"></li>
+    </ol>
+
+    <div class="form-group">
+        <button class="btn btn-default" ng-if="sffForm.steps.indexOf(sffForm.currentStep) > 0"
+                ng-click="sffForm.back()">
+            Назад
+        </button>
+        <button class="btn btn-primary" ng-if="sffForm.steps.indexOf(sffForm.currentStep) < sffForm.steps.length - 1"
+                ng-click="sffForm.next()" ng-disabled="form.$invalid">
+            Далее
+        </button>
+        <button class="btn btn-success" type="submit"
+                ng-if="sffForm.steps.indexOf(sffForm.currentStep) === sffForm.steps.length - 1"
+                ng-click="sffForm.submit()">
+            Отправить
+        </button>
+    </div>
+
+</form>
