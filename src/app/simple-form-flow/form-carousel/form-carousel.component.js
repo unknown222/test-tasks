@@ -26,14 +26,7 @@ class FormCarouselCtrl {
     steps = ['step1', 'step2', 'step3'];
     currentStep;
 
-    formData = {
-        sum: 300,
-        term: 5,
-        inn: 3348267890,
-        surname: "Jhon",
-        name: "Lebovsky",
-        city: "Kiev"
-    };
+    formData = {};
 
     constructor($location, $scope, $http, $sce) {
         this.$location = $location;
@@ -45,6 +38,15 @@ class FormCarouselCtrl {
 
     init() {
         this.registerLocationControls();
+        this.gerRemoteData(this.formData);
+    }
+
+    gerRemoteData(dataObject) {
+        this.$http.get('data/sample-form-data.json')
+            .then(response => {
+                Object.assign(dataObject, response.data);
+            })
+            .catch(console.error);
     }
 
     registerLocationControls() {
@@ -81,8 +83,11 @@ class FormCarouselCtrl {
         this.currentStep = this.steps[this.steps.indexOf(this.currentStep) - 1]
     }
 
-    submit() {
+    submit(data) {
         console.log("SUBMIT");
+        this.$http.post('www.test.url.com', data)
+            .then(console.log)
+            .catch(console.error);
     }
 
     getCities(value) {
