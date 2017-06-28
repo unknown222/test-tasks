@@ -2,8 +2,6 @@
 
 ### Quick start
 
-> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.module.js)
-
 ```bash
 # clone our repo
 $ git clone https://github.com/unknown222/test-tasks.git test-tasks
