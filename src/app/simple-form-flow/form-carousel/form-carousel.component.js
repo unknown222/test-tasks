@@ -28,7 +28,8 @@ class FormCarouselCtrl {
 
     formData = {};
 
-    constructor($location, $scope, $http, $sce) {
+
+    constructor($location, $scope, $http, $sce) { 'ngInject';
         this.$location = $location;
         this.$scope = $scope;
         this.$http = $http;
