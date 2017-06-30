@@ -11,17 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/preboot/angularjs-webpack.git"
+    "url": "https://github.com/unknown222/test-tasks"
   },
-  "author": "Jesus Rodriguez",
+  "author": "Zinevich Andr",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/preboot/angularjs-webpack/issues"
+    "url": "https://github.com/unknown222/test-tasks/issues"
   },
-  "homepage": "https://github.com/preboot/angularjs-webpack",
+  "homepage": "https://github.com/unknown222/test-tasks",
   "dependencies": {
     "@uirouter/angularjs": "^1.0.4",
-    "angular": "^1.5.0",
+    "angular": "^1.6.0",
+    "angular-mocks": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "bootstrap": "^3.3.7"
   },

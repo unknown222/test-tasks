@@ -4,3 +4,7 @@ home-component {
     align-items: center;
     justify-content: center;
 }
+
+home-component .btn {
+    margin: 5px;
+}

@@ -1,0 +1,8 @@
+login-form-example-component {
+    flex: 1 1 0;
+    padding: 15px;
+}
+
+login-form-example-component form {
+   max-width: 250px;
+}

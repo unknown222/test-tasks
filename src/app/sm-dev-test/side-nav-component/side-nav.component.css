@@ -1,0 +1,22 @@
+side-nav-component {
+    min-width: 200px;
+    background-color: whitesmoke;
+}
+
+side-nav-component > div {
+    padding: 10px;
+}
+
+side-nav-component .sidenav-header {
+    font-size: 16px;
+}
+
+side-nav-component .sidenav-item {
+    cursor: pointer;
+}
+
+side-nav-component .sidenav-item.active,
+side-nav-component .sidenav-item:hover {
+    background-color: gold;
+    color: black;
+}

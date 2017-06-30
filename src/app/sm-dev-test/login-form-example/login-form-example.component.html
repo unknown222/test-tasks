@@ -1,0 +1,32 @@
+<form name="form" novalidate ng-submit="form.$valid && loginFormExampleCtrl.loginUser(loginFormExampleCtrl.formData)"
+      ng-model-options="{ updateOn: 'blur' }">
+    <div class="form-group" ng-class="{'has-error': form.login.$dirty && form.login.$invalid}">
+        <label for="login">Login:</label>
+        <input class="form-control"
+               ng-model="loginFormExampleCtrl.formData.login"
+               id="login" name="login" required>
+        <div ng-if="form.login.$dirty">
+            <span ng-show="form.login.$error.required">This field is required</span>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': form.password.$dirty && form.password.$invalid}">
+        <label for="password">Password:</label>
+        <input class="form-control"
+               ng-model="loginFormExampleCtrl.formData.password"
+               type="password"
+               id="password" name="password" required>
+        <div ng-if="form.password.$dirty">
+            <span ng-show="form.password.$error.required">This field is required</span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success" type="submit">
+            Login
+        </button>
+    </div>
+</form>
+
+<div ng-if="loginFormExampleCtrl.error" class="error">Login error, check your login\password</div>
+
+<p>Note: login - test, password - test</p>

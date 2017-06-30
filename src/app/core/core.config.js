@@ -5,7 +5,7 @@ export class CoreConfig {
     $locationProvider;
     $urlRouterProvider;
 
-    constructor($locationProvider, $urlRouterProvider) {
+    constructor($locationProvider, $urlRouterProvider) { 'ngInject';
         this.$locationProvider = $locationProvider;
         this.$urlRouterProvider = $urlRouterProvider;
         this.init();
